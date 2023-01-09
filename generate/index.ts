@@ -1,11 +1,6 @@
 import { renderAsync, join, dirname } from '../deps.ts';
 import { getTables, getFields, close } from './queries.ts';
 
-console.log({
-  module: Deno.mainModule, 
-  importUrl: import.meta.url
-})
-
 const genURL = dirname(import.meta.url);
 const apiURL = join(genURL, '../api').replace(/\\/g, '/');
 
@@ -17,7 +12,7 @@ console.log({
 })
 
 async function render(templateName: string, tableData: any, file: string) {
-  const template = Deno.readTextFileSync(join(genURL, `./data/${templateName}.eta`));
+  const template = (await import(`./data/${templateName}.ts`)).default;
   const text = await renderAsync(template, tableData, { cache: true });
   const filePath = join(Deno.cwd(), '/api/', file);
   if (typeof text === 'string') {

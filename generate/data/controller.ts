@@ -1,3 +1,4 @@
+export default `
 import { <%= it.table.modelName %> } from "../models.ts";
 import * as Types from "../types.ts"
 
@@ -31,3 +32,4 @@ const controller: Controller<Types.<%= it.table.modelName %>> = {
 }
 
 export default controller;
+`;

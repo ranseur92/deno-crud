@@ -1,3 +1,4 @@
+export default `
 <% it.tables.forEach(function(table){ %>
 export type <%= table.modelName %> = {
 <% table.fields.forEach(function(f){ %>
@@ -6,3 +7,4 @@ export type <%= table.modelName %> = {
 }
 
 <% }) %>
+`;
