@@ -1,4 +1,4 @@
-import { renderAsync, join, fromFileUrl, dirname, toFileUrl } from '../deps.ts';
+import { renderAsync, join, dirname, toFileUrl } from '../deps.ts';
 import { getTables, getFields, close } from './queries.ts';
 
 console.log({
@@ -6,7 +6,7 @@ console.log({
   importUrl: import.meta.url
 })
 
-const genURL = fromFileUrl(dirname(import.meta.url));
+const genURL = dirname(import.meta.url);
 const apiURL = toFileUrl(join(genURL, '../api')).href.replace(/\\/g, '/');
 
 console.log({
