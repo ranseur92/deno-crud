@@ -4,6 +4,13 @@ import { getTables, getFields, close } from './queries.ts';
 const genURL = fromFileUrl(dirname(import.meta.url));
 const apiURL = toFileUrl(join(genURL, '../api')).href.replace(/\\/g, '/');
 
+console.log({
+  module: Deno.mainModule, 
+  importUrl: import.meta.url, 
+  genURL, 
+  apiURL
+})
+
 async function render(templateName: string, tableData: any, file: string) {
   const template = Deno.readTextFileSync(join(genURL, `./data/${templateName}.eta`));
   const text = await renderAsync(template, tableData, { cache: true });
