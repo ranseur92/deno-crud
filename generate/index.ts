@@ -1,4 +1,4 @@
-import { renderAsync, join, dirname, toFileUrl } from '../deps.ts';
+import { renderAsync, join, dirname } from '../deps.ts';
 import { getTables, getFields, close } from './queries.ts';
 
 console.log({
@@ -7,7 +7,7 @@ console.log({
 })
 
 const genURL = dirname(import.meta.url);
-const apiURL = toFileUrl(join(genURL, '../api')).href.replace(/\\/g, '/');
+const apiURL = join(genURL, '../api').replace(/\\/g, '/');
 
 console.log({
   module: Deno.mainModule, 
